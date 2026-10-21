@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Kill-Web: AI Preemptive Suppression Architecture</title>
+  <meta name="description" content="AI-Driven Sensor-to-Shooter Kill-Web Simulation and Network Architecture Prototype for MCA Minor Project.">
+  <link rel="stylesheet" href="/static/css/tactical_hud.css">
+</head>
+<body>
+
+  <!-- C2 TACTICAL HEADER -->
+  <header class="tactical-header" id="tacticalHeader">
+    <div class="brand-section">
+      <div class="brand-badge">KILL-WEB v4.2</div>
+      <div class="title-group">
+        <h1>Autonomous Preemptive Suppression Architecture</h1>
+        <p>AI-DRIVEN SENSOR-TO-SHOOTER SIMULATION & MULTI-OBJECTIVE ALLOCATION</p>
+      </div>
+    </div>
+
+    <!-- Scenario Controls & Modes -->
+    <div class="header-controls">
+      <div class="scenario-pill-group" role="group" aria-label="Simulation Scenario Selection">
+        <button class="scenario-btn active" id="btnScenarioTel" data-scenario="left_of_launch_tel">Left-of-Launch TEL</button>
+        <button class="scenario-btn" id="btnScenarioSwarm" data-scenario="multi_axis_swarm">Drone Swarm</button>
+        <button class="scenario-btn" id="btnScenarioHyper" data-scenario="hypersonic_vector">Hypersonic Staging</button>
+        <button class="scenario-btn" id="btnScenarioPeacetime" data-scenario="peacetime_patrol">Peacetime Baseline</button>
+      </div>
+
+      <button class="mode-toggle-btn" id="modeToggleBtn" title="Toggle between autonomous and human authorization">
+        ⚡ MODE: AUTONOMOUS PREEMPTIVE
+      </button>
+
+      <button class="audio-toggle-btn" id="audioToggleBtn" title="Mute or unmute synthesized tactical audio">
+        🔊 AUDIO: ON
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT: RADAR CANVAS + INTEL PANEL -->
+  <main class="tactical-viewport">
+    
+    <!-- LEFT: RADAR & VECTOR MAP -->
+    <section class="radar-container" aria-label="Tactical Radar Map">
+      <canvas id="tacticalCanvas"></canvas>
+
+      <!-- Coordinates HUD Overlay -->
+      <div class="radar-hud-coords" id="radarHudCoords">
+        <div>GRID: <span>SEC-ALPHA-34</span></div>
+        <div>DEFENSE RANGE: <span>75.0 KM</span></div>
+        <div>STREAM: <span id="streamStatus">CONNECTING...</span></div>
+      </div>
+
+      <!-- Tactical Legend -->
+      <div class="radar-legend">
+        <div class="legend-item"><div class="legend-dot routine"></div> Civilian / Routine</div>
+        <div class="legend-item"><div class="legend-dot hostile"></div> Hostile / Left-of-Launch</div>
+        <div class="legend-item"><div class="legend-dot asset"></div> Defense Asset Node</div>
+        <div class="legend-item"><div class="legend-dot beam"></div> Kill-Web Allocation</div>
+      </div>
+    </section>
+
+    <!-- RIGHT: INTELLIGENCE & ML ANOMALY ENGINE -->
+    <aside class="intel-panel" aria-label="Tactical Intelligence and Allocation Monitor">
+      
+      <!-- CARD 1: SENSOR FUSION ENGINE -->
+      <article class="intel-card" id="cardSensorFusion">
+        <div class="card-title">
+          <span>Layer 1: Sensor Data Fusion</span>
+          <span class="badge" id="telemetryConfidence">98% CONF</span>
+        </div>
+        <div class="sensor-stream-grid">
+          <div class="sensor-box">
+            <div class="label">RADAR DOPPLER / RCS</div>
+            <div class="val" id="telemetryRcs">-- dBm²</div>
+          </div>
+          <div class="sensor-box">
+            <div class="label">SIGINT RF POWER</div>
+            <div class="val" id="telemetryRf" style="color:var(--accent-amber)">-- mW</div>
+          </div>
+          <div class="sensor-box">
+            <div class="label">KALMAN VELOCITY</div>
+            <div class="val" id="telemetryVel">-- m/s</div>
+          </div>
+          <div class="sensor-box">
+            <div class="label">FUSED HEADING</div>
+            <div class="val" id="telemetryHeading">--°</div>
+          </div>
+        </div>
+        <div style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted); margin-top:6px;">
+          COORDINATES: <span id="telemetryCoords" style="color:var(--text-secondary)">--</span>
+        </div>
+      </article>
+
+      <!-- CARD 2: ML ANOMALY DETECTION BRAIN -->
+      <article class="intel-card" id="cardAnomalyBrain">
+        <div class="card-title">
+          <span>Layer 2: Anomaly Detection Brain</span>
+          <span class="badge" style="background:rgba(255,51,102,0.2); color:var(--accent-crimson)">ISOLATION FOREST</span>
+        </div>
+        
+        <div class="anomaly-display">
+          <!-- Circular Gauge -->
+          <div class="anomaly-gauge">
+            <svg class="gauge-svg" viewBox="0 0 76 76">
+              <circle class="gauge-bg" cx="38" cy="38" r="30"></circle>
+              <circle class="gauge-fill" id="gaugeFillCircle" cx="38" cy="38" r="30"></circle>
+            </svg>
+            <div class="gauge-text" id="gaugeScoreText">0.00</div>
+          </div>
+
+          <!-- Stage Badge & Description -->
+          <div class="anomaly-meta">
+            <div class="threat-stage-badge stage-routine" id="threatStageBadge">THREAT LEVEL: ROUTINE</div>
+            <div id="inspectorCallsign" style="font-family:var(--font-mono); font-weight:700; font-size:12px; color:#fff;">SELECTING TRACK...</div>
+          </div>
+        </div>
+
+        <div class="threat-explanation" id="threatExplanation">
+          Monitoring peacetime corridors. No anomalous military staging patterns detected.
+        </div>
+
+        <!-- Explainable Feature Attributions -->
+        <div class="attribution-list" id="attributionList">
+          <!-- Populated by app.js -->
+        </div>
+      </article>
+
+      <!-- CARD 3: TARGET ALLOCATION ROUTER -->
+      <article class="intel-card" id="cardTargetAllocation">
+        <div class="card-title">
+          <span>Layer 3: Target Allocation Router</span>
+          <span class="badge" style="background:rgba(192,64,255,0.2); color:var(--accent-purple)">HUNGARIAN OPTIMIZER</span>
+        </div>
+
+        <div class="alloc-table-wrap">
+          <table class="alloc-table">
+            <thead>
+              <tr>
+                <th>TARGET</th>
+                <th>ASSET</th>
+                <th>P_K</th>
+                <th>UTILITY</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody id="allocationsTableBody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- CARD 4: DEFENSE ASSET NODES MATRIX -->
+      <article class="intel-card" id="cardDefenseNodes" style="border-bottom:none;">
+        <div class="card-title">
+          <span>Defense Network Status</span>
+          <span class="badge" style="color:var(--accent-emerald)">6 NODES READY</span>
+        </div>
+        <div class="nodes-grid" id="defenseNodesGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </article>
+
+    </aside>
+  </main>
+
+  <!-- BOTTOM METRICS & TELEMETRY TICKER -->
+  <footer class="tactical-ticker-bar" id="tacticalFooter">
+    <div class="ticker-metrics">
+      <div>HOSTILE THREATS: <span class="val" id="metricThreats">0</span></div>
+      <div>PREEMPTIVE NEUTRALIZATIONS: <span class="val" id="metricNeutralized" style="color:var(--accent-emerald)">0</span></div>
+      <div>HUNGARIAN SOLVER LATENCY: <span class="val" id="metricSolverLat">2.1ms</span></div>
+      <div>SENSOR FUSION LATENCY: <span class="val" id="metricFusionLat">0.9ms</span></div>
+    </div>
+    <div class="ticker-feed">
+      <div class="live-dot"></div>
+      <span>LEFT-OF-LAUNCH KILL-CHAIN ENGINE ONLINE</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/static/js/audio_alerts.js"></script>
+  <script src="/static/js/tactical_canvas.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
