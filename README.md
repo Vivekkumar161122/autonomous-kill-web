@@ -108,7 +108,6 @@ PYTHONPATH=. .venv/bin/pytest tests/ -v
 ---
 
 ## 📖 Academic Documentation & Viva Preparation
-* Complete Academic Project Synopsis: [`docs/MCA_PROJECT_REPORT.md`](docs/MCA_PROJECT_REPORT.md)
 * Includes:
   * Formal Mathematical Problem Statements (Kalman Filter state equations, Isolation Forest average path length, Hungarian cost matrices)
   * Data Flow Diagrams (DFD Level 0, 1, and 2)
