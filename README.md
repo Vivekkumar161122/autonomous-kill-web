@@ -12,7 +12,7 @@
 ## 📌 Executive Summary
 The **Autonomous Kill-Web** is an AI-powered defense network prototype engineered for rapid threat identification and automated resource allocation. 
 
-In contested multi-domain operational theaters, legacy centralized Command and Control (C2) suffers from high latency across the **OODA loop** (Observe, Orient, Decide, Act). This system establishes a decentralized **Sensor-to-Shooter Kill-Web** that automates the left-of-launch preemptive suppression of mobile Transporter Erector Launchers (TELs), autonomous drone swarms, and hypersonic threats.
+In contested multi-domain operational theaters, legacy centralized Command and Control (C2) suffers from high latency across the **OODA loop** (Observe, Orient, Decide, Act). This system establishes a decentralized **Sensor-to-Shooter Kill-Web** that automates the left-of-launch preemptive suppression of mobile Transporter Erector Launchers (TELs), autonomous drone swarms and hypersonic threats.
 
 ---
 
@@ -88,7 +88,7 @@ http://127.0.0.1:8000
 
 ## 🧪 Running the Automated Test Suite
 
-The project includes unit and integration tests covering the fusion filter, anomaly engine, Hungarian allocator, and REST endpoints:
+The project includes unit and integration tests covering the fusion filter, anomaly engine, Hungarian allocator and REST endpoints:
 ```bash
 PYTHONPATH=. .venv/bin/pytest tests/ -v
 ```
@@ -107,13 +107,6 @@ PYTHONPATH=. .venv/bin/pytest tests/ -v
 
 ---
 
-## 📖 Academic Documentation & Viva Preparation
-* Includes:
-  * Formal Mathematical Problem Statements (Kalman Filter state equations, Isolation Forest average path length, Hungarian cost matrices)
-  * Data Flow Diagrams (DFD Level 0, 1, and 2)
-  * Top 10 Viva Voce Examination Questions with Model Answers
-
----
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
