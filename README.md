@@ -1,4 +1,4 @@
-# autonomous_kill_web: AI-Driven Sensor-to-Shooter Simulation Architecture
+# autonomous_kill_web: AI-Driven Sensor to Shooter Simulation Architecture
 
 [![CI Build & Test](https://github.com/Vivekkumar161122/automated_preemptive_suppression_architecture/actions/workflows/ci.yml/badge.svg)](https://github.com/Vivekkumar161122/automated_preemptive_suppression_architecture/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
