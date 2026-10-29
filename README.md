@@ -12,7 +12,7 @@
 ## 📌 Executive Summary
 The **Autonomous Kill-Web** is an AI-powered defense network prototype engineered for rapid threat identification and automated resource allocation. 
 
-In contested multi-domain operational theaters, legacy centralized Command and Control (C2) suffers from high latency across the **OODA loop** (Observe, Orient, Decide, Act). This system establishes a decentralized **Sensor-to-Shooter Kill-Web** that automates the left-of-launch preemptive suppression of mobile Transporter Erector Launchers (TELs), autonomous drone swarms and hypersonic threats.
+In contested multi-domain operational theaters, legacy centralized Command and Control (C2) suffers from high latency across the **OODA loop** (Observe, Orient, Decide and Act). This system establishes a decentralized **Sensor-to-Shooter Kill-Web** that automates the left-of-launch preemptive suppression of mobile Transporter Erector Launchers (TELs), autonomous drone swarms and hypersonic threats.
 
 ---
 
